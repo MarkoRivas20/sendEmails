@@ -23,7 +23,7 @@
                     </div>
                     <div class="d-flex">
                         {!! Form::submit('Agregar documentos', ['class' => 'btn btn-primary mr-2']) !!}
-                        <button class="btn btn-danger" type="button" onclick="deleteAllDocuments()">Borrar todos los documentos</button>
+                        <a class="btn btn-danger" type="button" href="{{route('admin.document.deleteAllDocuments')}}">Borrar todos los documentos</a>
                     </div>
                 </div>
             {!! Form::close() !!}
@@ -47,7 +47,12 @@
                                 <a href="{{url('/storage/'.$document->url)}}" target="_blank">{{$document->name}}</a>
                             </td>
                             <td width="10px">
-                                <a class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                <form action="{{route('admin.document.destroy', $document)}}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash"></i></button>
+                                </form>
+                                
                             </td>
                         </tr>
                     @endforeach

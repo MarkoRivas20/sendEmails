@@ -40,7 +40,7 @@
                                 <form action="{{route('admin.people.destroy', $person)}}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <a class="btn btn-danger btn-sm" type="submit">Eliminar</a>
+                                    <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
                                 </form>
                             </td>
                         </tr>

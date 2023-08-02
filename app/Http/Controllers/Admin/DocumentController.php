@@ -23,11 +23,9 @@ class DocumentController extends Controller
             
             $url = Storage::put('/documents', $file);
 
-            $name = explode("/", $url);
-
             $document = new Document();
 
-            $document->name = $name[1];
+            $document->name = $file->getClientOriginalName();
             $document->url = $url;
 
             $document->save();
@@ -37,15 +35,21 @@ class DocumentController extends Controller
     }
 
     public function deleteAllDocuments(){
-        Storage::deleteDirectory('documents');
-        Storage::createDirectory('documents');
 
         $documents = Document::all();
 
         foreach ($documents as $document) {
+            Storage::delete($document->url);
             $document->delete();
         }
 
         return redirect()->route('admin.document.index')->with('info','los documentos se eliminaron con éxito');
+    }
+
+    public function destroy(Document $document)
+    {
+        Storage::delete($document->url);
+        $document->delete();
+        return redirect()->route('admin.document.index')->with('info','el documento se eliminó con éxito');
     }
 }

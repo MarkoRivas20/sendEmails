@@ -27,7 +27,7 @@ class MailableName extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Mi Email de prueba',
+            subject: $this->data['subject'],
         );
     }
 
@@ -38,7 +38,7 @@ class MailableName extends Mailable
     {
         return new Content(
             view: 'mail.test-email',
-            with: ['name' => $this->data['name']],
+            with: ['body' => $this->data['body']],
         );
     }
 
@@ -50,7 +50,7 @@ class MailableName extends Mailable
     public function attachments(): array
     {
         return [
-            Attachment::fromPath($this->data['attachment'])->as('prueba.pdf')->withMime('application/pdf')
+            Attachment::fromPath($this->data['attachment'])->as('BOLETA DE PAGO.pdf')->withMime('application/pdf')
         ];
     }
 }

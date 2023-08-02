@@ -16,16 +16,5 @@ use Illuminate\Support\Facades\Mail;
 */
 
 Route::get('/', function () {
-    return redirect('/admin');
-});
-
-Route::get('/testroute', function() {
-
-    $data = [
-        "name" => "Correo de prueba",
-        "attachment" => public_path('/storage/resume.pdf')
-    ];
-
-    // The email sending is done using the to method on the Mail facade
-    Mail::to('marko.rivas98@gmail.com')->send(new MailableName($data));
+    return redirect('/admin/people');
 });

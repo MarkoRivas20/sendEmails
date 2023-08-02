@@ -329,6 +329,11 @@ return [
             'route'  => 'admin.document.index',
             'icon' => 'fas fa-upload',
         ],
+        [
+            'text' => 'Enviar emails',
+            'route'  => 'admin.email.index',
+            'icon' => 'fas fa-upload',
+        ],
         /*[
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
