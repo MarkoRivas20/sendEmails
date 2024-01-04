@@ -19,7 +19,7 @@ class EmailController extends Controller
 
     public function send(Request $request)
     {
-
+        set_time_limit(270);
         $people = Person::where('status', true)->get();
         $documents = Document::all();
 

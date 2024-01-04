@@ -332,7 +332,7 @@ return [
         [
             'text' => 'Enviar emails',
             'route'  => 'admin.email.index',
-            'icon' => 'fas fa-upload',
+            'icon' => 'fas fa-share-square',
         ],
         /*[
             'text'    => 'multilevel',
